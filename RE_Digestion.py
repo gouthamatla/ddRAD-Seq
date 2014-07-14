@@ -1,12 +1,17 @@
+# This script gives the double digest restriction fragments in a BED file format. This script has been adopted from Peterson et.al pipeline for ddRAD-Seq data analysis.
+# 'bedtools getfasta' can be used to extract the corresponding sequences from a genome.fa file
+# This script does not consider the reverse compliment
+# Usage: RE_Digestion.py > RE_Sites.bed
+
 import re,os,sys
 
-Str = "AGAATTCTCGTGCGAATTCGGATTTAAGCTAAGGCTGGCTGGAATTCAGTCGGCTGAGCGTAGGCTTAAGCGGCTGAGGCTGAGGTTAAAGGCGGATGCGCGTAGGCTGGATCGATCCCGGTGACGAATTCGTGCGGATGCGGCTGAAAGCTGGAATTCAGTCGGCTGAGCGTAGGCTTAAGCGGCTGAGGCTGAGGTTAAAGGCGGATGCGCGTAGGCTGGATCG"
+RE_Site1="CATG"
+RE_Site2="AATT"
 
-fname = "ref_PanTig1.0_chrUn.fa"
+fname = "Genome.fa"
 
 def fraglen_from_seq(seqName,seq,e1,e2):
     sites_by_pos = sorted(reduce(lambda x,y:x+y,[[(m.start(),e) for m in re.finditer(e,seq)] for e in [e1,e2]]))
-    #print sites_by_pos
     fraglens = []
     fragPos = ()
     lastpos = None
@@ -39,4 +44,4 @@ def getFastaRec(fname):
     return zip(ids, seqRec)
 
 for key in  getFastaRec(fname):
-    fraglen_from_seq(key[0],key[1],"CATG","AATT")
+    fraglen_from_seq(key[0],key[1],RE_Site1,RE_Site2)
