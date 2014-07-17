@@ -1,10 +1,10 @@
 # This script gives the double digest restriction fragments in a BED file format. This script has been adopted from Peterson et.al pipeline for ddRAD-Seq data analysis.
 # 'bedtools getfasta' can be used to extract the corresponding sequences from a genome.fa file
-# This script does not consider the reverse compliment
+# This script does not consider the reverse compliment of the genome.
 #
 # Usage: RE_Digestion.py > RE_Sites.bed
 #
-# 1. Edit the script and enter the Cutsite for RE site2 in line 12 and 13. 
+# 1. Edit the script and enter the Cutsite for RE sites in line 12 and 13. 
 # 2. Enter the full path to Genome fasta file in line 15.
 
 import re,os,sys
