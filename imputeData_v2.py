@@ -11,11 +11,11 @@ missing_samples=sys.argv[1]
 
 file_name=sys.argv[2]
 
-'''
+
 if not (missing_samples.isdigit()):
 	print ("Please give the integer as first argument and filename as 2nd argument")
 	exit()
-'''
+
 sample_names=[]
 population_info=[]
 locus_names=[]
