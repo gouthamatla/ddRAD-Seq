@@ -1,11 +1,21 @@
 #This program 
+
 from __future__ import print_function
-import random
+import random,sys,numbers
 
+if not len(sys.argv)>2:
+	print ("Usage: imputeData_v2.py <int> <FileName> > <output File Name>")
+	exit()
 
-missing_samples=24
-file_name="file4"
+missing_samples=sys.argv[1]
 
+file_name=sys.argv[2]
+
+'''
+if not (missing_samples.isdigit()):
+	print ("Please give the integer as first argument and filename as 2nd argument")
+	exit()
+'''
 sample_names=[]
 population_info=[]
 locus_names=[]
@@ -32,7 +42,7 @@ for i in range(0,data_columns):
             splitFile=line.split("\t")
             snp_data=splitFile[2].strip().split()     
             temp_array.append(snp_data[i])
-    for x in random.sample(range(1,num_samples,2),missing_samples):
+    for x in random.sample(range(1,num_samples,2),int(missing_samples)):
         temp_array[x]=0
         temp_array[x-1]=0
     main_array.append(temp_array)
