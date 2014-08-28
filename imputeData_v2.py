@@ -1,4 +1,8 @@
-#This program 
+# This program creates missing data in structure file.
+# Usage: imputeData_v2.py <int> <FileName> > <output File Name>
+# <int> - Number of samples to have missing data randomly
+# <FileName> - Input structure file
+# > <output File Name> - Output file
 
 from __future__ import print_function
 import random,sys,numbers
