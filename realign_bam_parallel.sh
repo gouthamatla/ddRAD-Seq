@@ -8,11 +8,11 @@ parallel java -Xmx8g -jar picard-tools-1.106/AddOrReplaceReadGroups.jar I={} O=`
 parallel samtools index {} ::: sorted*_RG.bam
 
 #Create Interval File
-parallel java -Xmx8g -jar ~/softs/GenomeAnalysisTK.jar -T RealignerTargetCreator -R ~/ddRAD_data/Genome/ref_PanTig1.0_chrUn.fa -I {} -o `echo {.} | awk '{ print $1".intervals"}'` ::: sorted*_RG.bam
+parallel java -Xmx8g -jar GenomeAnalysisTK.jar -T RealignerTargetCreator -R Genome.fa -I {} -o `echo {.} | awk '{ print $1".intervals"}'` ::: sorted*_RG.bam
 wait 
 
 #realign bases around indels
-parallel  java -Xmx8g -jar GenomeAnalysisTK.jar -T IndelRealigner -R ~/ddRAD_data/Genome/ref_PanTig1.0_chrUn.fa -I {} -targetIntervals `echo {.} | awk '{ print $1".intervals"}'`  -o `echo {.} | awk '{ print $1"_realigned.bam"}'` ::: sorted*_RG.bam
+parallel  java -Xmx8g -jar GenomeAnalysisTK.jar -T IndelRealigner -R Genome.fa -I {} -targetIntervals `echo {.} | awk '{ print $1".intervals"}'`  -o `echo {.} | awk '{ print $1"_realigned.bam"}'` ::: sorted*_RG.bam
 
 #index realigned files
 parallel samtools index {} ::: sorted*_realigned.bam
