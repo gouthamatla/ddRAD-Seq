@@ -20,4 +20,4 @@ parallel --jobs $ncores java -Xmx8g -jar GenomeAnalysisTK.jar -T IndelRealigner 
 parallel --jobs $ncores samtools index {} ::: sorted*_realigned.bam
 
 #call SNP using samtools 
-parallel --jobs $ncores "samtools mpileup -E -uf Genome.fa {} | bcftools view -cg - | vcfutils.pl varFilter -d 3 > {.}.vcf" ::: sorted*_realigned.bam
+#parallel --jobs $ncores "samtools mpileup -E -uf Genome.fa {} | bcftools view -cg - | vcfutils.pl varFilter -d 3 > {.}.vcf" ::: sorted*_realigned.bam
