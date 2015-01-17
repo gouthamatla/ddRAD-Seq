@@ -7,4 +7,4 @@ ncores=4
 
 #Run stacks denovo_map.pl
 
-denovo_map.pl $samples -b 1 -o ouputFolder -S -T $ncores
+denovo_map.pl $samples -b 1 -o ouputFolder -S -T $ncores -O popMap.txt
