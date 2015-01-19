@@ -11,7 +11,6 @@ parallel --jobs $ncores samtools index {} ::: sorted*_RG.bam
 
 #Create Interval File
 parallel --jobs $ncores java -Xmx8g -jar GenomeAnalysisTK.jar -T RealignerTargetCreator -R Genome.fa -I {} -o {.}.intervals ::: sorted*_RG.bam
-wait 
 
 #realign bases around indels
 parallel --jobs $ncores java -Xmx8g -jar GenomeAnalysisTK.jar -T IndelRealigner -R Genome.fa -I {} -targetIntervals {.}.intervals  -o {.}_realigned.bam ::: sorted*_RG.bam
