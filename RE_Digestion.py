@@ -49,3 +49,5 @@ def getFastaRec(fname):
 
 for key in  getFastaRec(fname):
     fraglen_from_seq(key[0],key[1],RE_Site1,RE_Site2)
+
+#This program outputs the Chr Name and the fragment coordinates. This can be saved to a file and can be used with getfasta of bedtools to fetch the genomic sequence from reference file.
