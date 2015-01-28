@@ -18,7 +18,7 @@ reads = pysam.Samfile(filename)
 for read in reads:
 	if read.is_paired and read.is_read1:
 	
-		#This will work if read 1 is mapped but read2 is unmapped. But I also want other way around
+		#This will work if read 1 is mapped but read2 is unmapped.
 		if  read.mate_is_unmapped: 
 			print "The mate is unmapped: ",read.qname
 			
@@ -38,12 +38,9 @@ for read in reads:
 		elif read.tid != mate.tid:
 			print "Mates mapped to different chr: ",read.qname,mate.qname
 			
-			#Strategy 3
-		elif mate.mate_is_unmapped:     ## I want to see if read2 is mapped but not read 1. This does not work
-			print "The mate is unmapped: ",mate.qname
-			
 	elif not read.is_paired:
 		print "Singleton: ",read.qname
 	
+	#This will work if read 2 is mapped but read1 is unmapped.
 	if read.is_paired and read.is_read2 and read.mate_is_unmapped:
 		print "The mate is unmapped: ",read.qname
