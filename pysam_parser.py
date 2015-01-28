@@ -1,5 +1,4 @@
-#This is basic script to show the usage of pysam to fetch all possible read pairs.
-
+# This is basic script to show the usage of pysam to fetch all possible read pairs.
 # Different strategies of Read [Pairs]
 #
 # 1. Read and mate mapped to same chromosome
@@ -7,10 +6,7 @@
 # 3. Read is mapped but mate is not mapped ( it could be either R1 or R2 )
 # 4. Read is singleton ( It could be R1 or R2)
 
-
 import pysam,sys
-
-
 
 filename = sys.argv[1]
 reads = pysam.Samfile(filename)
