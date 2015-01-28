@@ -1,3 +1,5 @@
+#This is basic script to show the usage of pysam to fetch all possible read pairs.
+
 # Different strategies of Read [Pairs]
 #
 # 1. Read and mate mapped to same chromosome
