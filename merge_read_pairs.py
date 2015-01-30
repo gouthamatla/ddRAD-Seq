@@ -4,6 +4,7 @@
 # 2. Read and mate mapped to different chromosome
 # 3. Read is mapped but mate is not mapped ( it could be either R1 or R2 )
 # 4. Read is singleton ( It could be R1 or R2)
+# Usage: python merge_read_pairs.py <input bam> < output sam>
 
 
 import pysam,sys
@@ -39,7 +40,7 @@ reads = pysam.Samfile(filename)
 
 header=reads.header
 
-outfile = pysam.AlignmentFile("tmpfilename.sam", "wh", header=header)
+outfile = pysam.AlignmentFile(outfile_name, "wh", header=header)
 a = pysam.AlignedSegment()
 
 def write_bam(query_name,query_seq,query_flag,query_ref_name,query_ref_start,query_mapping_qual,query_cigar):
